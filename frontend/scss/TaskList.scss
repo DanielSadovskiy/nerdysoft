@@ -1,0 +1,13 @@
+.taskList{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    & li {
+        position: relative;
+        width: 21%;
+        height: 300px;
+        margin-right: 1%;
+        background: darken($light-green,55%);
+    }
+}
