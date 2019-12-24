@@ -1,7 +1,10 @@
 import compose from 'recompose/compose';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {gql} from 'apollo-boost';
 import {graphql} from 'react-apollo';
 import { Register } from '../components/Register';
+import * as authActions from '../actions/auth'
 
 
 
@@ -18,4 +21,10 @@ const addUserFunction = graphql(addUser,{
         })
     })
 })
-export default compose(addUserFunction)(Register);
+const mapDispatchToProps = dispatch => ({
+    ...bindActionCreators(authActions, dispatch),
+});
+const mapStateToProps = (auth) => ({
+    nickname: auth.nickname,
+});
+export default compose(addUserFunction,connect(mapStateToProps,mapDispatchToProps))(Register);

@@ -109,7 +109,7 @@ const Query = new GraphQLObjectType({
             type:  GraphQLList(UserType),
             args: {nickname: { type: GraphQLString}},
             resolve(parent,args){
-                return user.find(user => item.nickname === "nazar")
+                // return user.find(user => item.nickname === "nazar")
             }
         },
        

@@ -102,6 +102,18 @@ module.exports = {
                     },
                 ],
             },
+            {
+                use: 'ts-loader',
+                test: /\.ts$/,
+                exclude: /node_modules/
+            },
+            {
+                enforce: 'pre',
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: 'tslint-loader',
+            }
+
         ],
     },
     plugins: [

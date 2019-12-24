@@ -54,26 +54,27 @@ export class Register extends PureComponent {
         }));
     };
 
-    async registrateNewUser() {
-        if (this.state.password !== this.state.confirm) {
-            alert('confirm password should be equal two password');
-        } else if(this.state.password.length < 6){
-            alert('password should be longer than 6 symbols');
-        } else{
-            const hashedPass = await bcrypt.hash(this.state.password,10)
-            this.props
-                .addUser({
-                    nickname: this.state.login,
-                    email: this.state.email,
-                    password: hashedPass,
-                }).then(res=> window.location.href="/login")
+    // async registrateNewUser() {
+    //     if (this.state.password !== this.state.confirm) {
+    //         alert('confirm password should be equal two password');
+    //     } else if(this.state.password.length < 6){
+    //         alert('password should be longer than 6 symbols');
+    //     } else{
+    //         const hashedPass = await bcrypt.hash(this.state.password,10)
+    //         this.props
+    //             .addUser({
+    //                 nickname: this.state.login,
+    //                 email: this.state.email,
+    //                 password: hashedPass,
+    //             }).then(res=> window.location.href="/login")
                 
-        }
-    }
+    //     }
+    // }
 
     render() {
         console.log(this.state);
-        const { registerModalIsOpen } = this.state;
+        const { email,login,password, registerModalIsOpen } = this.state;
+        const {register} = this.props;
         return (
             <div>
                 <Modal
@@ -111,7 +112,7 @@ export class Register extends PureComponent {
                             className={styles.signInBtn}
                             onClick={e => {
                                 e.preventDefault();
-                                this.registrateNewUser();
+                                register(login,email,password);
                             }}
                             type="submit"
                         >

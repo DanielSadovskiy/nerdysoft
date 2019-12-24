@@ -1,4 +1,15 @@
 type User {
   id: ID! @id
   name: String!
+  email: String!
+  password: String!
 }
+
+type Task {
+  id: ID! @id
+  title: String!
+  description: String!
+  createdBy: String!
+  createdFor: String!
+}
+
